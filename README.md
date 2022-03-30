@@ -10,6 +10,22 @@ This project is fulfilled as per the task guid; however, I faced some issues wit
 
 I am using Airbnb code style with some modifications and ESLint is configured. also I am using Husky to perform pre-commit tasks.
 
+# Project Router
+
+I am using react-router-dom v6 with an array routing configuration can be found in routes.ts, also all route components are lazy loaded
+
+# Forms
+
+I am using react-hook-form in building the task form; however, a native configuration is also provided
+
+# App State
+
+This app state is managed by redux-toolkit
+
+# Fetching Technique
+
+I am using axios to fetch data from
+
 ## Available Scripts
 
 In the project directory, you can run:
