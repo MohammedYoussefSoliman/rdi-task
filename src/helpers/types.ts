@@ -1,7 +1,7 @@
 import React from "react";
 
 export type User = {
-  id: string;
+  id: number;
   name: string;
   email: string;
   phone: string;

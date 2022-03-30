@@ -19,7 +19,7 @@ type IApiConfig = {
 type IProps = <T>(config: IApiConfig) => {
   isLoading: boolean;
   isSending: boolean;
-  data: T | undefined;
+  data: T | any;
   error: any;
   call: (callData?: any) => Promise<any>;
   status: "pending" | "success" | "error";

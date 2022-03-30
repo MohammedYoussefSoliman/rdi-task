@@ -8,7 +8,10 @@ const searchParamsSlice = createSlice({
   initialState,
   reducers: {
     setUsers(state, action: PayloadAction<User[]>) {
-      return [...state, ...action.payload];
+      return [...action.payload];
+    },
+    addUser(state, action: PayloadAction<User>) {
+      return [...state, action.payload];
     },
     updateUser(state, action: PayloadAction<User>) {
       const currentState: User[] = [...state];
@@ -20,11 +23,12 @@ const searchParamsSlice = createSlice({
 
       return currentState;
     },
-    deleteUser(state, action: PayloadAction<{ id: string }>) {
+    deleteUser(state, action: PayloadAction<{ id: number }>) {
       return state.filter((user) => user.id !== action.payload.id);
     },
   },
 });
 
-export const { setUsers, updateUser, deleteUser } = searchParamsSlice.actions;
+export const { setUsers, addUser, updateUser, deleteUser } =
+  searchParamsSlice.actions;
 export default searchParamsSlice.reducer;

@@ -1,6 +1,14 @@
-# Getting Started with Create React App
+# Simple placeholder CRUD
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An application used to fetch, add, edit delete from [http://jsonplaceholder.typicode.com/](http://jsonplaceholder.typicode.com/), built with React, Redux-toolkit, TypeScript, react-hook-forms, mui, and emotion.
+
+# Project Status
+
+This project is fulfilled as per the task guid; however, I faced some issues with the returned updated or deleted requests, so I kept there logic commented this could be found on UserForm page.
+
+# Linting and guards
+
+I am using Airbnb code style with some modifications and ESLint is configured. also I am using Husky to perform pre-commit tasks.
 
 ## Available Scripts
 
@@ -28,19 +36,3 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
