@@ -9,7 +9,7 @@ import { IconButton, Container } from "./styles";
 interface SnackbarProps {
   message: string | null;
   anchorOrigin?: SnackbarOrigin;
-  duration?: number | null;
+  duration?: number;
   status?: "success" | "failure" | "info";
   onClose?: () => void;
   unsubscribe?: () => void;
@@ -33,6 +33,7 @@ export default memo(function Snackbar({
     if (message) setOpen(Boolean(message));
     return () => {
       if (unsubscribe) unsubscribe();
+      setOpen(false);
     };
   }, [message, unsubscribe]);
 

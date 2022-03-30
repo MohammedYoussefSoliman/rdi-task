@@ -1,7 +1,10 @@
 import React from "react";
 import { Flex } from "components/Containers";
 import ConfirmModal from "components/ConfirmModal";
+import Snackbar from "components/Snackbar";
 import useHttp from "app/hooks/useHTTP";
+import { useDispatch } from "react-redux";
+import { deleteUser } from "app/State/usersSlice";
 import { EmailIcon, PhoneIcon, GlobeIcon } from "assets/svgs";
 import { Wrapper, Title, Subtitle, Anchor, Button } from "./styles";
 
@@ -14,11 +17,18 @@ interface CardProps {
 }
 
 export default function Card({ id, name, email, phone, website }: CardProps) {
-  const { isSending, call } = useHttp({
+  const dispatch = useDispatch();
+  const { isSending, call, status } = useHttp({
     method: "DELETE",
     endPoint: `users/${id}`,
   });
   const [openConfirm, setOpenConfirm] = React.useState<boolean>(false);
+
+  const handleConfirm = React.useCallback(async () => {
+    await call();
+    setOpenConfirm(false);
+    dispatch(deleteUser({ id }));
+  }, [call, dispatch, id]);
 
   return (
     <>
@@ -59,8 +69,22 @@ export default function Card({ id, name, email, phone, website }: CardProps) {
         open={openConfirm}
         loading={isSending}
         onClose={() => setOpenConfirm(false)}
-        handleConfirm={() => call()}
+        handleConfirm={handleConfirm}
       />
+      {status === "success" && (
+        <Snackbar
+          message={`user ${name} is successfully deleted`}
+          duration={2500}
+          status="success"
+        />
+      )}
+      {status === "error" && (
+        <Snackbar
+          message={`failed to delete user ${name}`}
+          duration={2500}
+          status="success"
+        />
+      )}
     </>
   );
 }

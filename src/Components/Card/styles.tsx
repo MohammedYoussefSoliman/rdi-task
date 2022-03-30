@@ -1,8 +1,8 @@
 import styled from "@emotion/styled";
+import { css } from "@emotion/react";
 import { Button as MuiButton } from "@mui/material";
 import colors from "helpers/colors";
 import { Property } from "csstype";
-import { css } from "@emotion/react";
 
 export const Title = styled.h2`
   font-size: 20px;

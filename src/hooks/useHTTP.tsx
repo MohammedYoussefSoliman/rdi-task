@@ -22,6 +22,7 @@ type IProps = <T>(config: IApiConfig) => {
   data: T | undefined;
   error: any;
   call: (callData?: any) => Promise<any>;
+  status: "pending" | "success" | "error";
 };
 
 const useHttp: IProps = ({
@@ -35,6 +36,9 @@ const useHttp: IProps = ({
   const [isSending, setIsSending] = useState<boolean>(false);
   const [data, setData] = useState<any>();
   const [error, setError] = useState<any | null>(null);
+  const [status, setStatus] = useState<"pending" | "success" | "error">(
+    "pending",
+  );
 
   const call = useCallback(
     // eslint-disable-next-line consistent-return
@@ -68,6 +72,7 @@ const useHttp: IProps = ({
         }
         setData(response.data);
         setError(false);
+        setStatus("success");
         return response;
       } catch (err) {
         const axiosError = err as AxiosError;
@@ -75,6 +80,7 @@ const useHttp: IProps = ({
           setError(axiosError.response?.data.errors);
         } else {
           setError("an unknown error occurred");
+          setStatus("error");
         }
       } finally {
         setIsLoading(false);
@@ -109,6 +115,7 @@ const useHttp: IProps = ({
     data,
     error,
     call,
+    status,
   };
 };
 
